@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Attic for Claude",
+  "version": "0.1.0",
+  "description": "Browse and continue your exported Claude chat history inside claude.ai. Stores data locally; not affiliated with Anthropic.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage", "unlimitedStorage"],
+  "host_permissions": ["https://claude.ai/*"],
+  "background": { "service_worker": "src/background.js" },
+  "action": {
+    "default_title": "Attic for Claude — import & settings",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_ui": { "page": "src/options.html", "open_in_tab": true },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["src/storage.js", "src/markdown.js", "src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

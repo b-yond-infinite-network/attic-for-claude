@@ -1,0 +1,12 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Attic for Claude">
+  <!-- Stacked archive layers. Monochrome coral so it reads on light and dark. -->
+  <!-- back layer (darkest) -->
+  <rect x="24" y="30" width="80" height="20" rx="6" fill="#A8503450"/>
+  <rect x="24" y="30" width="80" height="20" rx="6" fill="none" stroke="#A85034" stroke-width="3"/>
+  <!-- middle layer -->
+  <rect x="24" y="55" width="80" height="20" rx="6" fill="#C4694A"/>
+  <!-- front layer (brightest coral) -->
+  <rect x="24" y="80" width="80" height="20" rx="6" fill="#D97757"/>
+  <!-- subtle "pull" notch on the front layer to read as a card/drawer -->
+  <rect x="56" y="86" width="16" height="3.5" rx="1.75" fill="#ffffff" opacity="0.85"/>
+</svg>

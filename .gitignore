@@ -1,0 +1,20 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Build artifacts
+*.zip
+dist/
+web-store.zip
+
+# Never commit exported Claude data (conversations.json ships with users.json —
+# containing your name/email/phone — and a projects/ folder; keep all of it out)
+conversations.json
+*conversations*.json
+users.json
+projects.json
+projects/
+data-*/

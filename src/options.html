@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- SPDX-License-Identifier: MIT | Copyright (c) 2026 B-Yond -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attic for Claude</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --accent: #c96442;
+        --bg: #faf9f5;
+        --panel: #f2f0e9;
+        --text: #1f1e1c;
+        --muted: #706e66;
+        --border: #e6e3d8;
+        --serif: ui-serif, Georgia, "Times New Roman", serif;
+        --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --accent: #d97757;
+          --bg: #1f1e1c;
+          --panel: #292824;
+          --text: #f5f4ef;
+          --muted: #a3a099;
+          --border: #3a382f;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font: 14px/1.55 var(--sans);
+        background: var(--bg);
+        color: var(--text);
+        padding: 40px 20px 72px;
+      }
+      .wrap { max-width: 600px; margin: 0 auto; }
+      h1 { font-family: var(--serif); font-size: 26px; font-weight: 500; display: flex; align-items: center; gap: 11px; margin: 0 0 6px; letter-spacing: -0.01em; }
+      .logo { border-radius: 6px; flex: none; }
+      .lede { color: var(--muted); margin: 0 0 28px; font-size: 14px; }
+      .card { background: var(--panel); border: 0.5px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+      .card h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; margin: 0 0 14px; }
+      label { display: block; font-weight: 500; margin: 12px 0 5px; }
+      input[type="file"] { width: 100%; font: inherit; }
+      input[type="date"], select {
+        background: var(--bg); color: var(--text); border: 0.5px solid var(--border);
+        border-radius: 8px; padding: 8px 10px; font: inherit;
+      }
+      .row { display: flex; gap: 14px; flex-wrap: wrap; }
+      .row > div { flex: 1; min-width: 160px; }
+      .toggle { display: flex; align-items: center; gap: 10px; margin: 12px 0; }
+      .toggle input { accent-color: var(--accent); width: 15px; height: 15px; }
+      button {
+        background: var(--accent); color: #fff; border: none; border-radius: 9px;
+        padding: 9px 16px; font: 500 14px var(--sans); cursor: pointer;
+      }
+      button.secondary { background: transparent; color: var(--text); border: 0.5px solid var(--border); }
+      button.danger { background: transparent; color: #c0392b; border: 0.5px solid color-mix(in srgb, #c0392b 40%, transparent); }
+      button:hover { filter: brightness(1.05); }
+      .stats { display: flex; gap: 28px; flex-wrap: wrap; }
+      .stat .n { font-family: var(--serif); font-size: 26px; font-weight: 500; }
+      .stat .l { color: var(--muted); font-size: 12px; }
+      .btnrow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+      #status { margin-top: 14px; color: var(--muted); min-height: 18px; font-size: 13px; }
+      .hint { color: var(--muted); font-size: 12.5px; margin-top: 6px; }
+      code { background: var(--bg); border: 0.5px solid var(--border); border-radius: 5px; padding: 1px 5px; font-size: 12.5px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1><img class="logo" src="../icons/icon-48.png" alt="" width="26" height="26" /> Attic for Claude</h1>
+      <p class="lede">Import your exported <code>conversations.json</code> and your past chats appear on claude.ai — interleaved by date in the sidebar and All-chats page, marked with a coral dot.</p>
+
+      <div class="card">
+        <h2>Loaded data</h2>
+        <div class="stats">
+          <div class="stat"><div class="n" id="stat-total">0</div><div class="l">conversations</div></div>
+          <div class="stat"><div class="n" id="stat-consumed">0</div><div class="l">continued (hidden)</div></div>
+          <div class="stat"><div class="n" id="span" style="font-size:14px;font-weight:600">—</div><div class="l">date span</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Import</h2>
+        <label for="file">conversations.json</label>
+        <input type="file" id="file" accept="application/json,.json" />
+        <div class="hint">From claude.ai → Settings → Privacy → Export data. Re-importing merges/updates by conversation id.</div>
+        <div class="btnrow"><button id="import">Import</button></div>
+      </div>
+
+      <div class="card">
+        <h2>Display settings</h2>
+        <div class="toggle"><input type="checkbox" id="enabled" /> <span>Show local archive in the sidebar &amp; All-chats page</span></div>
+        <div class="toggle"><input type="checkbox" id="includeatt" /> <span>Include text-attachment content in continuations</span></div>
+        <label for="model">Continue with model <span style="font-weight:400;color:var(--muted)">(best-effort; original model isn't in the export)</span></label>
+        <select id="model" style="background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 9px;font:inherit;width:100%;max-width:280px">
+          <option value="">Leave claude.ai's current default</option>
+          <option value="Opus 4.8">Opus 4.8</option>
+          <option value="Sonnet 4.5">Sonnet 4.5</option>
+          <option value="Haiku 4.5">Haiku 4.5</option>
+        </select>
+        <label for="sidebarlimit">Sidebar limit</label>
+        <input type="number" id="sidebarlimit" min="0" max="500" step="5" style="background:var(--bg);color:var(--text);border:0.5px solid var(--border);border-radius:8px;padding:8px 10px;font:inherit;width:110px" />
+        <div class="hint">Most recent local chats to show in the sidebar (0 = all). The rest still appear on the All-chats page.</div>
+        <div class="row" style="margin-top:12px">
+          <div><label for="from">Show from</label><input type="date" id="from" /></div>
+          <div><label for="to">Show until</label><input type="date" id="to" /></div>
+        </div>
+        <div class="hint">Leave dates empty for no limit. Filters which imported conversations appear.</div>
+        <div class="btnrow" style="margin-top:14px"><button id="save">Save settings</button></div>
+      </div>
+
+      <div class="card">
+        <h2>Maintenance</h2>
+        <div class="btnrow">
+          <button class="secondary" id="reset-consumed">Restore continued conversations</button>
+          <button class="danger" id="clear">Delete all local data</button>
+        </div>
+      </div>
+
+      <div id="status"></div>
+
+      <p class="hint" style="margin-top:28px; text-align:center; opacity:0.8">
+        Attic for Claude stores everything locally in your browser and sends nothing anywhere.
+        Not affiliated with, endorsed by, or sponsored by Anthropic. “Claude” is a trademark of Anthropic.
+      </p>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
