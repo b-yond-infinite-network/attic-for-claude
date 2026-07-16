@@ -1,0 +1,45 @@
+src/markdown.js
+  s_8bacf2e4ceb320::t_06977b9a6972ab 1-281
+.gitignore
+  s_8bacf2e4ceb320::t_5945ddf2392bfe 1-20
+LICENSE
+  s_8bacf2e4ceb320::t_5efe5948cff86e 1-21
+PRIVACY.md
+  s_8bacf2e4ceb320::t_0c68e692a1548d 1-46
+README.md
+  s_8bacf2e4ceb320::t_cefe61fc6b2ac8 1-127
+docs/PUBLISHING.md
+  s_8bacf2e4ceb320::t_37829c8c5534de 1-98
+icons/icon.svg
+  s_8bacf2e4ceb320::t_a8a79abb428cc0 1-12
+manifest.json
+  s_8bacf2e4ceb320::t_36e20175a594bb 1-33
+src/background.js
+  s_8bacf2e4ceb320::t_e5ef0bdf1bee13 1-4
+src/content.css
+  s_8bacf2e4ceb320::t_429483f8692e0b 1-760
+src/content.js
+  s_8bacf2e4ceb320::t_b9bcbb1d49d07a 1-887
+src/options.html
+  s_8bacf2e4ceb320::t_941e2510fbd5ea 1-133
+src/options.js
+  s_8bacf2e4ceb320::t_b4fe00622a274a 1-79
+src/storage.js
+  s_8bacf2e4ceb320::t_e0a2e9f7efa0fe 1-267
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "e0d41d87e9c6a7d56570499559568543285c71f7",
+  "prompts": {},
+  "sessions": {
+    "s_8bacf2e4ceb320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b75198c8-8375-4e37-a98a-c58d6b90743f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Barb0dF <barbod.forghani@reailize.com>"
+    }
+  }
+}
