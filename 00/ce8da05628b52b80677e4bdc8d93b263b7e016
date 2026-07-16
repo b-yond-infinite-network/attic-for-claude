@@ -1,0 +1,59 @@
+src/markdown.js
+  s_8bacf2e4ceb320::t_7d55e0784897d5 1-281
+.github/pull_request_template.md
+  s_a1c5d0ba8a9811::t_496272fa52fb33 1-10
+.github/workflows/ci.yml
+  s_a1c5d0ba8a9811::t_04ed4be9dc1f1a 1-26
+MANUAL.md
+  s_a1c5d0ba8a9811::t_1023db65f919ec 1-156
+PRIVACY.md
+  s_a1c5d0ba8a9811::t_aec55d4ac5eae3 1-49
+SECURITY.md
+  s_a1c5d0ba8a9811::t_76e789352b189e 1-23
+.gitignore
+  s_8bacf2e4ceb320::t_692195d0019a5e 1-20
+LICENSE
+  s_8bacf2e4ceb320::t_5e5d0b502f75f0 1-21
+README.md
+  s_8bacf2e4ceb320::t_cd5f7f0b458be8 1-136
+icons/icon.svg
+  s_8bacf2e4ceb320::t_254178d9208382 1-12
+manifest.json
+  s_8bacf2e4ceb320::t_8957dbab6be506 1-33
+src/background.js
+  s_8bacf2e4ceb320::t_0961e771d92c9f 1-4
+src/content.css
+  s_8bacf2e4ceb320::t_8777fe2a03d9e9 1-760
+src/content.js
+  s_8bacf2e4ceb320::t_da7621426dd641 1-887
+src/options.html
+  s_8bacf2e4ceb320::t_edaf15d13e0f9f 1-133
+src/options.js
+  s_8bacf2e4ceb320::t_cdaea0153b59a6 1-79
+src/storage.js
+  s_8bacf2e4ceb320::t_38809b511eecff 1-267
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "00ce8da05628b52b80677e4bdc8d93b263b7e016",
+  "prompts": {},
+  "sessions": {
+    "s_8bacf2e4ceb320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b75198c8-8375-4e37-a98a-c58d6b90743f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Barb0dF <207042876+Barb0dF@users.noreply.github.com>"
+    },
+    "s_a1c5d0ba8a9811": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d4c0e7b0-7713-4c5e-b404-990b4a42017a",
+        "model": "unknown"
+      },
+      "human_author": "Barb0dF <207042876+Barb0dF@users.noreply.github.com>"
+    }
+  }
+}
